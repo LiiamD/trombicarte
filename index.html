@@ -3,23 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trombicarte — Promo CDA</title>
+  <title>Trombicarte — Promo CDA P9</title>
 
-  <!-- Leaflet + MarkerCluster (versions figées) -->
+  <!-- Polices : uniquement les graisses utilisées (éco-conception) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@400;600&display=swap">
+
+  <!-- Leaflet + MarkerCluster (versions figées).
+       MarkerCluster.Default.css n'est pas chargé : les pastilles de groupe sont stylées dans style.css -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <aside class="panel" aria-label="Liste des apprenants">
+  <aside class="panel" aria-label="Liste de la promo">
     <header class="panel__head">
-      <h1>Trombicarte</h1>
-      <p class="panel__sub">Promo CDA · <span id="count">0</span> apprenants</p>
+      <h1 class="brand">Trombi<mark>carte</mark></h1>
+      <p class="panel__sub">Promo CDA P9 · <span id="count">0</span> personnes</p>
+
       <label class="search" for="search">
         <span class="sr-only">Rechercher</span>
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
         <input id="search" type="search" placeholder="Nom, entreprise, ville…" autocomplete="off">
       </label>
+
+      <div class="filters" role="group" aria-label="Filtrer par rôle">
+        <button type="button" class="chip" data-role="all" aria-pressed="true">
+          Tous <span class="chip__count" data-count="all">0</span>
+        </button>
+        <button type="button" class="chip" data-role="alternant" aria-pressed="false">
+          <span class="dot dot--alternant" aria-hidden="true"></span>Alternants
+          <span class="chip__count" data-count="alternant">0</span>
+        </button>
+        <button type="button" class="chip" data-role="formateur" aria-pressed="false">
+          <span class="dot dot--formateur" aria-hidden="true"></span>Formateurs
+          <span class="chip__count" data-count="formateur">0</span>
+        </button>
+      </div>
     </header>
     <ul id="list" class="list"></ul>
   </aside>

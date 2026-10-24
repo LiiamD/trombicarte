@@ -1,12 +1,14 @@
 # Trombicarte
 
-Trombinoscope de la promo sur une carte interactive : chaque apprenant est placé sur l'adresse de son entreprise d'alternance. Un clic sur le point affiche sa photo, son prénom, son nom et son entreprise.
+Trombinoscope de la promo CDA P9 sur une carte interactive : chaque personne est placée sur l'adresse de son entreprise. Un clic sur le point affiche sa photo, son prénom, son nom, son rôle et son entreprise.
 
 ## Stack
 
-- **Leaflet 1.9.4** : carte et fonds OpenStreetMap
+- **Leaflet 1.9.4** : carte interactive
+- **OpenStreetMap** : fond de carte (gratuit, sans clé d'API), désaturé en CSS, clair ou sombre selon le thème du système
 - **Leaflet.markercluster 1.5.3** : regroupe les points proches et écarte ceux qui partagent la même adresse
 - **Géoplateforme IGN** (ex-API Adresse) : conversion adresse → latitude/longitude
+- **Lora** (titre) et **DM Sans** (texte) via Google Fonts
 - HTML / CSS / JS vanilla, aucun build, déployable tel quel sur GitHub Pages
 
 ## Arborescence
@@ -18,7 +20,7 @@ js/app.js                      # carte, popups, liste, recherche
 data/apprenants.source.json    # ce que vous remplissez (sans coordonnées)
 data/apprenants.json           # généré par le script (avec lat/lng), lu par le site
 scripts/geocode.mjs            # géocodage des adresses
-uploads/photos/                # photos des apprenants
+uploads/photos/                # photos (prenom-nom.webp, ~300 px, < 40 Ko)
 ```
 
 ## Ajouter un apprenant
@@ -30,13 +32,16 @@ uploads/photos/                # photos des apprenants
    {
      "prenom": "Camille",
      "nom": "Durand",
+     "role": "alternant",
      "entreprise": "Nom de l'entreprise",
      "adresse": "12 rue Exemple 83300 Draguignan",
      "photo": "uploads/photos/camille-durand.jpg"
    }
    ```
 
-   Sans photo (`"photo": ""`), les initiales s'affichent à la place.
+   - `role` : `"alternant"` (point jaune) ou `"formateur"` (point violet, badge). Absent ou mal orthographié = `"alternant"`.
+   - Sans photo (`"photo": ""`), les initiales s'affichent à la place.
+   - Sans entreprise (`"entreprise": ""`), la popup affiche « Entreprise non renseignée ».
 3. Lancer le géocodage (Node 18+) :
 
    ```bash
