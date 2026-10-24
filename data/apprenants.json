@@ -100,6 +100,16 @@
     "lng": 2.273386
   },
   {
+    "prenom": "Mariane",
+    "nom": "MILANO",
+    "role": "formateur",
+    "entreprise": "Simplon x Wild Code School",
+    "adresse": "34 Rue Antoine Primat 69100 Villeurbanne",
+    "photo": "uploads/photos/formateur/mariane_milano.jfif",
+    "lat": 45.757138,
+    "lng": 4.897116
+  },
+  {
     "prenom": "Zoé",
     "nom": "PILIA",
     "role": "alternant",
@@ -135,7 +145,7 @@
     "role": "formateur",
     "entreprise": "Simplon x Wild Code School",
     "adresse": "3 Boulevard Michelet 13008 Marseille",
-    "photo": "uploads/photos/formateur/adrien_sergent",
+    "photo": "uploads/photos/formateur/adrien_sergent.jfif",
     "lat": 43.267852,
     "lng": 5.393568
   },

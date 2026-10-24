@@ -9,10 +9,11 @@
   { "prenom": "Yuliana",   "nom": "KRASULYA", "role": "alternant", "entreprise": "AXA",   "adresse": "313 Terrasses de l'Arche 92727 Nanterre", "photo": "uploads/photos/alternant/yuliana_krasulya.jfif" },
   { "prenom": "Cécile",   "nom": "LAVRUT-PARDO",  "role": "alternant", "entreprise": "Alta Ares","adresse": "8 rue de Levis 75017 Paris", "photo": "uploads/photos/alternant/cecile_lavrut-pardo.jfif" },
   { "prenom": "Ludwig",   "nom": "MARAIS",  "role": "alternant", "entreprise": "SFR SA","adresse": "16 rue du Général Alain de Boissieu 75015 Paris", "photo": "uploads/photos/alternant/ludwig_marais.png" },
+  { "prenom": "Mariane",   "nom": "MILANO",  "role": "formateur",  "entreprise": "Simplon x Wild Code School", "adresse": "34 Rue Antoine Primat 69100 Villeurbanne", "photo": "uploads/photos/formateur/mariane_milano.jfif" },
   { "prenom": "Zoé",   "nom": "PILIA",  "role": "alternant", "entreprise": "AXA","adresse": "4 Allée du Château Blanc 59290 Wasquehal", "photo": "uploads/photos/alternant/zoe_pilia.jfif" },
   { "prenom": "Fabrice",   "nom": "QUENUM",  "role": "alternant", "entreprise": "Infotel","adresse": "16 avenue Léon Gaumont 75020 Paris", "photo": "uploads/photos/alternant/fabrice_quenum.jfif" },
   { "prenom": "Prescillia",   "nom": "ROSART",  "role": "alternant", "entreprise": "Decathlon","adresse": "4 boulevard de Mons 59650 Villeneuve-d'Ascq", "photo": "uploads/photos/alternant/prescillia_rosart.jfif" },
-  { "prenom": "Adrien",   "nom": "SERGENT",  "role": "formateur",  "entreprise": "Simplon x Wild Code School", "adresse": "3 Boulevard Michelet 13008 Marseille", "photo": "uploads/photos/formateur/adrien_sergent" },
+  { "prenom": "Adrien",   "nom": "SERGENT",  "role": "formateur",  "entreprise": "Simplon x Wild Code School", "adresse": "3 Boulevard Michelet 13008 Marseille", "photo": "uploads/photos/formateur/adrien_sergent.jfif" },
   { "prenom": "Antoine",   "nom": "SEROI",  "role": "alternant", "entreprise": "Schneider Electric","adresse": "5 avenue Raymond Chanas 38320 Eybens", "photo": "uploads/photos/alternant/antoine_seroi.jfif" },
   { "prenom": "Sara",   "nom": "SPADARI",  "role": "alternant", "entreprise": "Infotel","adresse": "16 avenue Léon Gaumont 75020 Paris", "photo": "uploads/photos/alternant/rosa_spadari.jfif" },
   { "prenom": "Loren",   "nom": "VISSET",  "role": "alternant", "entreprise": "Onepoint","adresse": "29 rue des Sablons 75116 Paris", "photo": "uploads/photos/alternant/loren_visset.jfif" }
