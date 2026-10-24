@@ -1,24 +1,54 @@
+/* ==========================================================
+   Trombicarte — refonte
+   Principes :
+   - 60-30-10 : neutres dominants, jaune CDA P9 en second, violet en accent rare
+   - une couleur = une signification : jaune = alternant, violet = formateur ;
+     l'interface (filtre actif, groupes) reste neutre
+   - fond OpenStreetMap désaturé en CSS pour que les points ressortent seuls
+   ========================================================== */
+
+/* Mise en page : panneau-liste 360px à gauche, carte plein écran à droite */
 :root {
-  --bg: #f4f6f5;
+  /* Neutres (60 %) : gris légèrement teinté de violet */
+  --bg: #f6f5f9;
   --panel: #ffffff;
-  --ink: #17201c;
-  --muted: #5d6b64;
-  --line: #dde3e0;
-  --accent: #0f7a5a;
-  --accent-soft: #e2f2ec;
-  --radius: 10px;
-  --font: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --ink: #231a3a;
+  --muted: #6b6478;
+  --line: #e7e4ee;
+  --hover: #f1eff6;
+
+  /* Rôles : jaune (30 %) et violet (10 %) */
+  --yellow: #f1c40f;               /* couleur CDA P9 : remplissages */
+  --yellow-ring: #d4a90a;          /* même teinte, plus dense : contours sur fond clair */
+  --yellow-soft: #fdf1c2;
+  --violet: #6c3cf5;
+  --violet-soft: #ece6fe;
+  --on-yellow: #231a3a;            /* texte sur jaune : toujours sombre */
+  --highlight: #f1c40f;            /* surligneur du titre : jaune en clair */
+
+  --shadow-sm: 0 1px 2px rgba(35, 26, 58, 0.06);
+  --shadow-md: 0 2px 6px rgba(35, 26, 58, 0.08), 0 8px 24px rgba(35, 26, 58, 0.08);
+  --radius: 12px;
+
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #101513;
-    --panel: #17201c;
-    --ink: #e8efeb;
-    --muted: #93a39b;
-    --line: #2a3530;
-    --accent: #3fc495;
-    --accent-soft: #1d3a30;
+    --bg: #14111c;
+    --panel: #1c1828;
+    --ink: #eeeaf7;
+    --muted: #a39db3;
+    --line: #2c2639;
+    --hover: #252033;
+    --yellow-ring: #f1c40f;        /* sur fond sombre, le jaune pur contraste déjà */
+    --yellow-soft: #3a3116;
+    --violet: #9b7bff;
+    --violet-soft: #2c2347;
+    --highlight: #6c3cf5;          /* surligneur du titre : violet en sombre (le texte clair reste lisible) */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -28,105 +58,306 @@ html, body { height: 100%; margin: 0; }
 
 body {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  font-family: var(--font);
+  grid-template-columns: 360px 1fr;
+  font-family: var(--font-body);
+  font-size: 15px;
   background: var(--bg);
   color: var(--ink);
 }
 
-/* ---------- Panneau latéral ---------- */
+/* ---------- Panneau ---------- */
 .panel {
   display: flex;
   flex-direction: column;
   min-height: 0;
   background: var(--panel);
   border-right: 1px solid var(--line);
+  z-index: 1;
 }
 
 .panel__head {
-  padding: 20px 18px 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* empêche le contenu d'élargir la colonne */
+  gap: 14px;
+  padding: 24px 20px 16px;
   border-bottom: 1px solid var(--line);
 }
 
-.panel__head h1 { margin: 0; font-size: 1.4rem; letter-spacing: -0.01em; }
-.panel__sub { margin: 4px 0 14px; color: var(--muted); font-size: 0.9rem; }
+/* Titre : encre + surligneur jaune sous « carte » */
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.brand mark {
+  font-style: italic;
+  color: inherit;
+  padding: 0 0.08em;
+  background: linear-gradient(transparent 58%, var(--highlight) 58%, var(--highlight) 92%, transparent 92%);
+}
 
+.panel__sub {
+  margin: -8px 0 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recherche */
+.search { position: relative; display: block; }
+.search__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  pointer-events: none;
+}
 .search input {
   width: 100%;
-  padding: 10px 12px;
+  padding: 10px 12px 10px 38px;
   font: inherit;
   color: var(--ink);
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
-.search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.search input::placeholder { color: var(--muted); }
+.search input:focus { outline: 2px solid var(--violet); outline-offset: 1px; background: var(--panel); }
 
+/* Filtres : contrôle segmenté, état actif neutre (n'appartient à aucun rôle) */
+.filters {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.chip {
+  flex: 1 1 auto;   /* largeur selon le contenu : « Tous » reste court */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 7px 6px;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.chip:hover { color: var(--ink); }
+.chip[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm), 0 0 0 1px var(--line);
+  font-weight: 600;
+}
+.chip:focus-visible { outline: 2px solid var(--violet); outline-offset: 1px; }
+
+.chip__count {
+  min-width: 1.5em;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  background: var(--hover);
+}
+
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.dot--alternant { background: var(--yellow); box-shadow: inset 0 0 0 1.5px var(--yellow-ring); }
+.dot--formateur { background: var(--violet); }
+
+/* ---------- Liste ---------- */
 .list {
   list-style: none;
   margin: 0;
   padding: 8px;
   overflow-y: auto;
   flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 2px;
 }
 
 .list__item {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border: 0;
   border-radius: var(--radius);
-  background: none;
+  background: transparent;
   color: inherit;
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transition: background 0.15s;
 }
-.list__item:hover,
-.list__item:focus-visible { background: var(--accent-soft); outline: none; }
+.list__item:hover { background: var(--hover); }
+.list__item:focus-visible { outline: 2px solid var(--violet); outline-offset: -2px; }
 
-.list__name { font-weight: 600; }
-.list__company { color: var(--muted); font-size: 0.85rem; }
-.list__empty { padding: 16px; color: var(--muted); }
+/* Ligne sélectionnée (popup ouverte sur la carte) */
+.list__item.is-active { background: var(--hover); }
+.list__item.is-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--ink);
+}
 
-/* ---------- Avatars ---------- */
+.list__text { display: grid; min-width: 0; }
+.list__meta { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.list__name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list__company,
+.list__city {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list__company { font-size: 0.84rem; color: var(--ink); opacity: 0.8; }
+.list__city { font-size: 0.78rem; color: var(--muted); }
+
+.list__empty { padding: 24px 12px; color: var(--muted); text-align: center; }
+
+/* ---------- Avatars : anneau = rôle ---------- */
 .avatar {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   object-fit: cover;
-  background: var(--accent-soft);
-  color: var(--accent);
   display: grid;
   place-items: center;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--bg);
+  box-shadow: 0 0 0 2px var(--panel), 0 0 0 4px var(--ring);
 }
-.avatar--lg { width: 96px; height: 96px; font-size: 1.8rem; }
+.avatar--alternant { --ring: var(--yellow-ring); background: var(--yellow-soft); }
+.avatar--formateur { --ring: var(--violet); background: var(--violet-soft); }
+.avatar--lg { width: 88px; height: 88px; font-size: 1.6rem; }
 
-/* ---------- Carte & popup ---------- */
-#map { height: 100%; min-height: 0; }
+/* ---------- Badges ---------- */
+.badge {
+  flex: none;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge--alternant { background: var(--yellow); color: var(--on-yellow); }
+.badge--formateur { background: var(--violet); color: #fff; }
 
-.leaflet-popup-content { margin: 16px; }
-.card { display: grid; justify-items: center; gap: 6px; text-align: center; min-width: 180px; }
-.card__name { margin: 6px 0 0; font-size: 1.05rem; font-weight: 700; }
-.card__company { margin: 0; color: var(--accent); font-weight: 600; }
-.card__address { margin: 0; color: #5d6b64; font-size: 0.8rem; }
+/* ---------- Carte ---------- */
+#map { height: 100%; min-height: 0; background: var(--bg); }
+.leaflet-container { font-family: var(--font-body); }
 
-/* Popup Leaflet reste claire : on force des couleurs lisibles */
-.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #fff; color: #17201c; }
-.leaflet-popup-content .avatar { background: #e2f2ec; color: #0f7a5a; }
+/* Fond de carte désaturé : le filtre ne touche que les tuiles,
+   pas les points, les groupes ni les popups (qui sont dans d'autres calques) */
+.leaflet-tile-pane { filter: grayscale(1) brightness(1.04) contrast(0.92); }
+
+@media (prefers-color-scheme: dark) {
+  /* Gris inversé : fond sombre, routes claires */
+  .leaflet-tile-pane { filter: grayscale(1) invert(1) brightness(0.82) contrast(0.9); }
+}
+
+.pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(35, 26, 58, 0.45);
+  transition: transform 0.15s;
+}
+.pin:hover { transform: scale(1.15); }
+.pin--alternant { background: #f1c40f; }
+.pin--formateur { background: #6c3cf5; }
+
+/* Groupes : neutres, car ils peuvent mélanger les rôles */
+.cluster {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #231a3a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 5px rgba(35, 26, 58, 0.14), 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Popup : fond blanc fixe, lisible sur les deux fonds de carte */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip { background: #fff; color: #231a3a; box-shadow: 0 8px 28px rgba(35, 26, 58, 0.22); }
+.leaflet-popup-content-wrapper { border-radius: 16px; }
+.leaflet-popup-content { margin: 22px 20px 18px; }
+.leaflet-container a.leaflet-popup-close-button { top: 6px; right: 6px; color: #6b6478; }
+
+.leaflet-popup-content .avatar { --panel: #fff; color: #231a3a; }
+.leaflet-popup-content .avatar--alternant { --ring: #d4a90a; background: #fdf1c2; }
+.leaflet-popup-content .avatar--formateur { --ring: #6c3cf5; background: #ece6fe; }
+.leaflet-popup-content .badge--formateur { background: #6c3cf5; }
+
+.card { display: grid; justify-items: center; gap: 6px; text-align: center; min-width: 200px; }
+/* Préfixe .leaflet-popup-content : écrase la marge de 17px que Leaflet met sur les <p> */
+.leaflet-popup-content .card__name { margin: 10px 0 2px; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; }
+.leaflet-popup-content .card__company { margin: 6px 0 0; font-weight: 600; color: #231a3a; }
+.leaflet-popup-content .card__address { margin: 0; color: #6b6478; font-size: 0.8rem; }
+
+/* Contrôles Leaflet accordés au thème */
+.leaflet-touch .leaflet-bar,
+.leaflet-bar { border: 1px solid var(--line); box-shadow: var(--shadow-md); border-radius: 10px; overflow: hidden; }
+.leaflet-bar a { color: var(--ink); background: var(--panel); border-color: var(--line); }
+.leaflet-bar a:hover { background: var(--hover); }
+.leaflet-container .leaflet-control-attribution { background: var(--panel); color: var(--muted); opacity: 0.9; }
+.leaflet-control-attribution a { color: var(--ink); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .chip, .list__item, .pin { transition: none; }
+  .pin:hover { transform: none; }
+}
+
 /* ---------- Mobile : carte en haut, liste en bas ---------- */
 @media (max-width: 760px) {
-  body { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; }
+  body { grid-template-columns: 1fr; grid-template-rows: 48vh 1fr; }
   #map { grid-row: 1; }
   .panel { grid-row: 2; border-right: 0; border-top: 1px solid var(--line); }
+  .panel__head { padding: 16px; gap: 12px; }
+  .brand { font-size: 1.8rem; }
 }
