@@ -3,7 +3,7 @@
   { "prenom": "Mathieu",   "nom": "BOURASSEAU",  "role": "alternant",  "entreprise": "Groupe Gautier",    "adresse": "19 rue Georges Clemenceau 85510 Le Boupère", "photo": "uploads/photos/alternant/mathieu_bourasseau.jfif" },
   { "prenom": "Christophe",   "nom": "DELOBEL",  "role": "formateur",  "entreprise": "Simplon x Wild Code School", "adresse": "2 bis Rue d'Haverskerque, 62120 Wardrecques", "photo": "uploads/photos/formateur/christophe_delobel.jpeg" },
   { "prenom": "Thibault",     "nom": "DEPEIGE",  "role": "alternant", "entreprise": "Infotel",    "adresse": "16 avenue Léon Gaumont 75020 Paris", "photo": "uploads/photos/alternant/thibault_depeige.jfif" },
-  { "prenom": "Liamine",    "nom": "DJELLALI",   "role": "alternant", "entreprise": "Pizzorno Envrionnement",    "adresse": "109 rue Jean Aicard 83300 Draguignan", "photo": "uploads/photos/alternant/liamine_djellali.jfif" },
+  { "prenom": "Liamine",    "nom": "DJELLALI",   "role": "alternant", "entreprise": "Pizzorno Environnement",    "adresse": "109 rue Jean Aicard 83300 Draguignan", "photo": "uploads/photos/alternant/liamine_djellali.jfif" },
   { "prenom": "Enzo",    "nom": "GOHARD",  "role": "alternant", "entreprise": "MonClub",     "adresse": "24 Villa des Lilas, 75019 Paris", "photo": "uploads/photos/alternant/enzo_gohard.jfif" },
   { "prenom": "Baris",  "nom": "GUNAY",    "role": "alternant", "entreprise": "Mot.tiff Unlimited","adresse": "35 boulevard Henri IV 75004 Paris", "photo": "uploads/photos/alternant/baris_gunay.jfif" },
   { "prenom": "Yuliana",   "nom": "KRASULYA", "role": "alternant", "entreprise": "AXA",   "adresse": "313 Terrasses de l'Arche 92727 Nanterre", "photo": "uploads/photos/alternant/yuliana_krasulya.jfif" },
