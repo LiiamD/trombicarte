@@ -130,6 +130,16 @@
     "lng": 3.141528
   },
   {
+    "prenom": "Adrien",
+    "nom": "SERGENT",
+    "role": "formateur",
+    "entreprise": "Simplon x Wild Code School",
+    "adresse": "3 Boulevard Michelet 13008 Marseille",
+    "photo": "uploads/photos/formateur/adrien_sergent",
+    "lat": 43.267852,
+    "lng": 5.393568
+  },
+  {
     "prenom": "Antoine",
     "nom": "SEROI",
     "role": "alternant",
