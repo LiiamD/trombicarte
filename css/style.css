@@ -1,0 +1,132 @@
+:root {
+  --bg: #f4f6f5;
+  --panel: #ffffff;
+  --ink: #17201c;
+  --muted: #5d6b64;
+  --line: #dde3e0;
+  --accent: #0f7a5a;
+  --accent-soft: #e2f2ec;
+  --radius: 10px;
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101513;
+    --panel: #17201c;
+    --ink: #e8efeb;
+    --muted: #93a39b;
+    --line: #2a3530;
+    --accent: #3fc495;
+    --accent-soft: #1d3a30;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ---------- Panneau latéral ---------- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+}
+
+.panel__head {
+  padding: 20px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel__head h1 { margin: 0; font-size: 1.4rem; letter-spacing: -0.01em; }
+.panel__sub { margin: 4px 0 14px; color: var(--muted); font-size: 0.9rem; }
+
+.search input {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.list__item:hover,
+.list__item:focus-visible { background: var(--accent-soft); outline: none; }
+
+.list__name { font-weight: 600; }
+.list__company { color: var(--muted); font-size: 0.85rem; }
+.list__empty { padding: 16px; color: var(--muted); }
+
+/* ---------- Avatars ---------- */
+.avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+.avatar--lg { width: 96px; height: 96px; font-size: 1.8rem; }
+
+/* ---------- Carte & popup ---------- */
+#map { height: 100%; min-height: 0; }
+
+.leaflet-popup-content { margin: 16px; }
+.card { display: grid; justify-items: center; gap: 6px; text-align: center; min-width: 180px; }
+.card__name { margin: 6px 0 0; font-size: 1.05rem; font-weight: 700; }
+.card__company { margin: 0; color: var(--accent); font-weight: 600; }
+.card__address { margin: 0; color: #5d6b64; font-size: 0.8rem; }
+
+/* Popup Leaflet reste claire : on force des couleurs lisibles */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #fff; color: #17201c; }
+.leaflet-popup-content .avatar { background: #e2f2ec; color: #0f7a5a; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Mobile : carte en haut, liste en bas ---------- */
+@media (max-width: 760px) {
+  body { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; }
+  #map { grid-row: 1; }
+  .panel { grid-row: 2; border-right: 0; border-top: 1px solid var(--line); }
+}

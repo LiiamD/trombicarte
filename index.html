@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trombicarte — Promo CDA</title>
+
+  <!-- Leaflet + MarkerCluster (versions figées) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <aside class="panel" aria-label="Liste des apprenants">
+    <header class="panel__head">
+      <h1>Trombicarte</h1>
+      <p class="panel__sub">Promo CDA · <span id="count">0</span> apprenants</p>
+      <label class="search" for="search">
+        <span class="sr-only">Rechercher</span>
+        <input id="search" type="search" placeholder="Nom, entreprise, ville…" autocomplete="off">
+      </label>
+    </header>
+    <ul id="list" class="list"></ul>
+  </aside>
+
+  <main id="map" aria-label="Carte des entreprises"></main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

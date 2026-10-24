@@ -1,0 +1,10 @@
+[
+  { "prenom": "Camille", "nom": "Durand",  "entreprise": "Exemple — Agence Web Azur", "adresse": "Place du Marché 83300 Draguignan", "photo": "" },
+  { "prenom": "Yanis",   "nom": "Benali",  "entreprise": "Exemple — Data Provence",    "adresse": "Place Puget 83000 Toulon", "photo": "" },
+  { "prenom": "Léa",     "nom": "Martin",  "entreprise": "Exemple — Data Provence",    "adresse": "Place Puget 83000 Toulon", "photo": "" },
+  { "prenom": "Hugo",    "nom": "Petit",   "entreprise": "Exemple — Sud Logiciels",    "adresse": "Cours Mirabeau 13100 Aix-en-Provence", "photo": "" },
+  { "prenom": "Inès",    "nom": "Garcia",  "entreprise": "Exemple — Riviera Apps",     "adresse": "Place Masséna 06000 Nice", "photo": "" },
+  { "prenom": "Thomas",  "nom": "Roux",    "entreprise": "Exemple — Estérel Numérique","adresse": "Place Agricola 83600 Fréjus", "photo": "" },
+  { "prenom": "Sarah",   "nom": "Lefèvre", "entreprise": "Exemple — Calanques Tech",   "adresse": "Quai du Port 13002 Marseille", "photo": "" },
+  { "prenom": "Mehdi",   "nom": "Haddad",  "entreprise": "Exemple — Brignoles Services","adresse": "Place Carami 83170 Brignoles", "photo": "" }
+]
