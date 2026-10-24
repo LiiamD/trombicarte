@@ -24,7 +24,7 @@
     "nom": "DELOBEL",
     "role": "formateur",
     "entreprise": "Simplon x Wild Code School",
-    "adresse": "2 bis Rue d'Haverskerque, 62120 Wardrecques",
+    "adresse": "2 bis Rue d'Haverskerque 62120 Wardrecques",
     "photo": "uploads/photos/formateur/christophe_delobel.jpeg",
     "lat": 50.710434,
     "lng": 2.344409
@@ -43,7 +43,7 @@
     "prenom": "Liamine",
     "nom": "DJELLALI",
     "role": "alternant",
-    "entreprise": "Pizzorno Envrionnement",
+    "entreprise": "Pizzorno Environnement",
     "adresse": "109 rue Jean Aicard 83300 Draguignan",
     "photo": "uploads/photos/alternant/liamine_djellali.jfif",
     "lat": 43.539964,
@@ -54,7 +54,7 @@
     "nom": "GOHARD",
     "role": "alternant",
     "entreprise": "MonClub",
-    "adresse": "24 Villa des Lilas, 75019 Paris",
+    "adresse": "24 Villa des Lilas 75019 Paris",
     "photo": "uploads/photos/alternant/enzo_gohard.jfif",
     "lat": 48.879746,
     "lng": 2.394627
