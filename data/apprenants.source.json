@@ -16,5 +16,5 @@
   { "prenom": "Adrien",   "nom": "SERGENT",  "role": "formateur",  "entreprise": "Simplon x Wild Code School", "adresse": "3 Boulevard Michelet 13008 Marseille", "photo": "uploads/photos/formateur/adrien_sergent.jfif" },
   { "prenom": "Antoine",   "nom": "SEROI",  "role": "alternant", "entreprise": "Schneider Electric","adresse": "5 avenue Raymond Chanas 38320 Eybens", "photo": "uploads/photos/alternant/antoine_seroi.jfif" },
   { "prenom": "Sara",   "nom": "SPADARI",  "role": "alternant", "entreprise": "Infotel","adresse": "16 avenue Léon Gaumont 75020 Paris", "photo": "uploads/photos/alternant/rosa_spadari.jfif" },
-  { "prenom": "Loren",   "nom": "VISSET",  "role": "alternant", "entreprise": "Onepoint","adresse": "29 rue des Sablons 75116 Paris", "photo": "uploads/photos/alternant/loren_visset.jfif" }
+  { "prenom": "Loren",   "nom": "VISSET",  "role": "alternant", "entreprise": "Onepoint","adresse": "3 rue Lavoisier 44100 Nantes", "photo": "uploads/photos/alternant/loren_visset.jfif" }
 ]

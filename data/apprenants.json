@@ -24,7 +24,7 @@
     "nom": "DELOBEL",
     "role": "formateur",
     "entreprise": "Simplon x Wild Code School",
-    "adresse": "2 bis Rue d'Haverskerque 62120 Wardrecques",
+    "adresse": "2 bis Rue d'Haverskerque, 62120 Wardrecques",
     "photo": "uploads/photos/formateur/christophe_delobel.jpeg",
     "lat": 50.710434,
     "lng": 2.344409
@@ -54,7 +54,7 @@
     "nom": "GOHARD",
     "role": "alternant",
     "entreprise": "MonClub",
-    "adresse": "24 Villa des Lilas 75019 Paris",
+    "adresse": "24 Villa des Lilas, 75019 Paris",
     "photo": "uploads/photos/alternant/enzo_gohard.jfif",
     "lat": 48.879746,
     "lng": 2.394627
@@ -174,9 +174,9 @@
     "nom": "VISSET",
     "role": "alternant",
     "entreprise": "Onepoint",
-    "adresse": "29 rue des Sablons 75116 Paris",
+    "adresse": "3 rue Lavoisier 44100 Nantes",
     "photo": "uploads/photos/alternant/loren_visset.jfif",
-    "lat": 48.864724,
-    "lng": 2.282732
+    "lat": 47.209465,
+    "lng": -1.57183
   }
 ]
